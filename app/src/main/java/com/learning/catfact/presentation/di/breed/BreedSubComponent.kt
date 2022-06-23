@@ -1,6 +1,6 @@
 package com.learning.catfact.presentation.di.breed
 
-import com.learning.catfact.MainActivity
+import com.learning.catfact.presentation.MainActivity
 import dagger.Subcomponent
 
 @BreedScope

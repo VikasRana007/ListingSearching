@@ -20,7 +20,6 @@ open class BreedAdapter : RecyclerView.Adapter<MyViewHolder>(), Filterable {
         breedList.clear()
         breedList.addAll(breeds)
         breedListFiltered = breeds
-//        breedListAll = ArrayList(breeds)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -41,17 +40,23 @@ open class BreedAdapter : RecyclerView.Adapter<MyViewHolder>(), Filterable {
     override fun getFilter(): Filter {
         val filter = object : Filter() {
             override fun performFiltering(constraint: CharSequence?): FilterResults {
-                var filterResultss = FilterResults()
+                val filterResultss = FilterResults()
 
                 if (constraint == null || constraint.isEmpty()) {
                     filterResultss.values = breedListFiltered
                     filterResultss.count = breedListFiltered.size
                 } else {
-                    var searchChar = constraint.toString().toLowerCase()
-                    var filterResults = ArrayList<Data>()
+                    val searchChar = constraint.toString().lowercase()
+                    val filterResults = ArrayList<Data>()
 
                     for (data in breedListFiltered) {
-                        if (data.breed!!.toLowerCase().contains(searchChar)) {
+                        if (data.breed!!.lowercase().contains(searchChar) || data.coat!!.lowercase()
+                                .contains(searchChar) ||
+                            data.country!!.lowercase()
+                                .contains(searchChar) || data.origin!!.lowercase()
+                                .contains(searchChar) ||
+                            data.pattern!!.lowercase().contains(searchChar)
+                        ) {
                             filterResults.add(data)
                         }
                     }

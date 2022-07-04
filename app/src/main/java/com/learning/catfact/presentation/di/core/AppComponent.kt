@@ -16,7 +16,5 @@ import javax.inject.Singleton
         CacheDataModule::class]
 )
 interface AppComponent {
-
     fun breedSubComponent(): BreedSubComponent.Factory
-
 }

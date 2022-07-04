@@ -25,8 +25,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        (application as Injector).createBreedSubComponent()
-            .inject(this)
+        (application as Injector).createBreedSubComponent().inject(this)
         // now we can inject dependencies into this activity , lets inject view model factory class
 
         breedViewModel = ViewModelProvider(this, factory)[BreedViewModel::class.java]
